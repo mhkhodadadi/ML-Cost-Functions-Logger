@@ -11,11 +11,6 @@ import warnings
 # Suppress convergence warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
-def fun_update(frame):
-    lines_normal.set_data(range(frame), costs_normal[:frame])
-    lines_weighted.set_data(range(frame), costs_weighted[:frame])
-    return lines_normal, lines_weighted
-
 # Function to update weights for misclassified samples
 def update_weights(model, X, y, weights):
     y_pred = model.predict(X)
@@ -79,7 +74,21 @@ for ax in axes:
     ax.grid()
     ax.legend()
 
+iter = 0
+cycles = 1
+def fun_animation(frame):
+    global iter
+    iter += 1
+    # Exit condition after specified cycles
+    if iter >= iterations * cycles:  # Stop after the permitted cycles
+        # plt.close(fig)  # Closes the plot window
+        return
+    # Update the lines with new data
+    lines_normal.set_data(range(frame + 1), costs_normal[:frame + 1])
+    lines_weighted.set_data(range(frame + 1), costs_weighted[:frame + 1])
+    return lines_normal, lines_weighted
+
 # Running animation
-ani = FuncAnimation(fig, fun_update, frames=iterations, interval=20, blit=True)
+ani = FuncAnimation(fig, fun_animation, frames=iterations, interval=20, blit=True)
 plt.tight_layout()
 plt.show()
