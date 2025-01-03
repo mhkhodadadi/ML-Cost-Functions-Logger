@@ -1,4 +1,4 @@
-# ML-Cost-Functions-Logger  
+# Machin Learning Cost Functions Logger  
 ### Methods for Training Logistic Regression: Internal vs. External Loops
 
 In this Code, we will train a logistic regression model on a classification dataset using the LogisticRegression algorithm in three different ways:
