@@ -73,7 +73,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation  
 ...  
 # Running animation  
-ani = FuncAnimation(fig, fun_update, frames=iterations, interval=20, blit=True)  
+ani = FuncAnimation(fig, fun_animation, frames=iterations, interval=20, blit=True)  
 plt.tight_layout()  
 plt.show()
 ```  
@@ -83,7 +83,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation  
 from IPython.display import HTML  
 ...  
-ani = FuncAnimation(fig, fun_update, frames=iterations, interval=20, blit=True)  
+ani = FuncAnimation(fig, fun_animation, frames=iterations, interval=20, blit=True)  
 plt.tight_layout()  
 display(HTML(ani.to_jshtml()))  
 plt.close()  
